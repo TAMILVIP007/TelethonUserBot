@@ -16,9 +16,7 @@ logger = logging.getLogger(__name__)
 async def _(event):
     if event.fwd_from:
         return
-    message_id = event.message.id
-    if event.reply_to_msg_id:
-        message_id = event.reply_to_msg_id
+    message_id = event.reply_to_msg_id or event.message.id
     r = requests.get("https://yesno.wtf/api").json()
     await bot.send_message(
         event.chat_id,

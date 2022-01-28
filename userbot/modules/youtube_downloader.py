@@ -43,8 +43,10 @@ async def progress(current, total, event, start, type_of_ps, file_name=None):
         estimated_total_time = elapsed_time + time_to_completion
         progress_str = "{0}{1} {2}%\n".format(
             ''.join("█" for i in range(math.floor(percentage / 10))),
-            ''.join("░" for i in range(10 - math.floor(percentage / 10))),
-            round(percentage, 2))
+            ''.join("░" for _ in range(10 - math.floor(percentage / 10))),
+            round(percentage, 2),
+        )
+
         tmp = progress_str + \
             "{0} of {1}\nETA: {2}".format(
                 humanbytes(current),
@@ -154,7 +156,7 @@ async def download_video(v_url):
             ytdl_data = ytdl.extract_info(url)
         filename = sorted(get_lst_of_files(out_folder, []))
     except DownloadError as DE:
-        await v_url.edit(f"`{str(DE)}`")
+        await v_url.edit(f'`{DE}`')
         return
     except ContentTooShortError:
         await v_url.edit("`The download content was too short.`")
@@ -180,7 +182,7 @@ async def download_video(v_url):
         await v_url.edit("`There was an error during info extraction.`")
         return
     except Exception as e:
-        await v_url.edit(f"{str(type(e)): {str(e)}}")
+        await v_url.edit(f'{str(type(e)): {e}}')
         return
     c_time = time.time()
 

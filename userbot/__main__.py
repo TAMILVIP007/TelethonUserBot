@@ -5,6 +5,7 @@
 #
 """ Userbot start point """
 
+
 import glob
 import logging
 import os
@@ -45,8 +46,7 @@ for noload in NO_LOAD:
     print(f"Removed plugin {noload}")
 
 
-SEM_TEST = os.environ.get("SEMAPHORE", None)
-if SEM_TEST:
+if SEM_TEST := os.environ.get("SEMAPHORE", None):
     bot.disconnect()
 else:
     bot.run_until_disconnected()

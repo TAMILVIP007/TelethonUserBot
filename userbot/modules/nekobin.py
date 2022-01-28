@@ -47,10 +47,7 @@ async def _(event):
         else:
             message = previous_message.message
     if downloaded_file_name.endswith(".py"):
-        # else:
-        #     message = "SYNTAX: `.paste <long text to include>`"
-        py_file = ""
-        py_file += ".py"
+        py_file = "" + ".py"
         data = message
         key = requests.post('https://nekobin.com/api/documents',
                             json={"content": data}).json().get('result').get('key')

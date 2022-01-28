@@ -54,8 +54,7 @@ async def _(event):
             await event.edit("Finish downloading to my local")
             to_upload_file = directory_name
             output = await create_archive(to_upload_file)
-            is_zip = False
-            if is_zip:
+            if is_zip := False:
                 check_if_file = await create_archive(to_upload_file)
                 if check_if_file is not None:
                     to_upload_file = check_if_file

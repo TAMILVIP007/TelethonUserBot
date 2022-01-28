@@ -15,11 +15,7 @@ logger = logging.getLogger(__name__)
 async def sozluk(event):
     if event.fwd_from:
         return
-    word = event.pattern_match.group(1)
-
-    if not word:
-        await event.edit("anlamını öğrenmek istediğiniz kelimeyi girin")
-    else:
+    if word := event.pattern_match.group(1):
         try:
             r_req = requests.get(
                 f"https://api.dictionaryapi.dev/api/v1/entries/tr/{word}")
@@ -37,3 +33,6 @@ async def sozluk(event):
             await event.edit(out)
         except:
             await event.edit("hata oluştu")
+
+    else:
+        await event.edit("anlamını öğrenmek istediğiniz kelimeyi girin")

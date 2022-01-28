@@ -99,8 +99,7 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    music_link = event.pattern_match.group(1)
-    if music_link:
+    if music_link := event.pattern_match.group(1):
         chat = "@YTAudioBot"
         async with event.client.conversation(chat) as conv:
             await conv.send_message(music_link)

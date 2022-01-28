@@ -22,8 +22,7 @@ async def _(event):
         i = 1
         msgs = []
         from_user = None
-        input_str = event.pattern_match.group(1)
-        if input_str:
+        if input_str := event.pattern_match.group(1):
             from_user = await event.client.get_entity(input_str)
             logger.info(from_user)
         async for message in event.client.iter_messages(

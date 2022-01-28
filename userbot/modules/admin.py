@@ -407,8 +407,7 @@ async def keep_read(message):
     """ The mute logic. """
     from userbot.database.mongo import cli
     cli = cli["Userbot"]["mute_chat"]
-    kread = cli.find({"chat_id": message.chat_id})
-    if kread:
+    if kread := cli.find({"chat_id": message.chat_id}):
         for i in kread:
             if i["chat_id"] == message.chat_id:
                 await message.client.send_read_acknowledge(

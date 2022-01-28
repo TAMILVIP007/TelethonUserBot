@@ -82,8 +82,8 @@ InitGDrive()
 
 def getProgressBarString(percentage):
     return "[{0}{1}]\n".format(
-        ''.join("▰" for i in range(math.floor(percentage / 5))),
-        ''.join("▱" for i in range(18 - math.floor(percentage / 5))),
+        ''.join("▰" for _ in range(math.floor(percentage / 5))),
+        ''.join("▱" for _ in range(18 - math.floor(percentage / 5))),
     )
 
 
@@ -475,7 +475,7 @@ class GDriveHelper:
                         self.getRootNode(), folder_id, f)
                     self.size += int(file.get('size') or 0)
                     self.file_count += 1
-            if len(reqs) != 0:
+            if reqs:
                 await asyncio.wait(reqs)
 
     async def copyFile(self, file_id, dest_id):

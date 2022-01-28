@@ -2,6 +2,7 @@
 Syntax:
 ."""
 
+
 import asyncio
 import logging
 import os
@@ -19,8 +20,7 @@ logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s'
 logger = logging.getLogger(__name__)
 
 
-ENV = bool(os.environ.get("ENV", False))
-if ENV:
+if ENV := bool(os.environ.get("ENV", False)):
     from sample_config import Config
 elif os.path.exists("sample_config.py"):
     from sample_config import Development as Config

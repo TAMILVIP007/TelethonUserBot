@@ -48,8 +48,7 @@ async def spam_watch_(event):
         ):
             return ""
         try:
-            ban = client.get_ban(user.id)
-            if ban:
+            if ban := client.get_ban(user.id):
                 await event.client(
                     EditBannedRequest(
                         event.chat_id, user.id, BANNED_RIGHTS)

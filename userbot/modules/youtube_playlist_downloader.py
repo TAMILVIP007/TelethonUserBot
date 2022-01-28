@@ -95,7 +95,7 @@ async def download_video(v_url):
             # print(ytdl_data['thumbnail'])
         filename = sorted(get_lst_of_files(out_folder, []))
     except DownloadError as DE:
-        await v_url.edit(f"`{str(DE)}`")
+        await v_url.edit(f'`{DE}`')
         return
     except ContentTooShortError:
         await v_url.edit("`The download content was too short.`")
@@ -121,7 +121,7 @@ async def download_video(v_url):
         await v_url.edit("`There was an error during info extraction.`")
         return
     except Exception as e:
-        await v_url.edit(f"{str(type(e)): {str(e)}}")
+        await v_url.edit(f'{str(type(e)): {e}}')
         return
     c_time = time.time()
     await v_url.edit("`YouTube Playlist Downloading Processing Now.\nPlease Wait!`")

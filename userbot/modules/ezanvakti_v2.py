@@ -55,7 +55,7 @@ async def namaz_(event):
     istanbul_now = datetime.now(tz)
     bugun = istanbul_now.strftime("%d%m%Y")
 
-    gun = bugun[0:2]
+    gun = bugun[:2]
     ay = bugun[2:4]
     yil = bugun[4:]
     tam_gun = gun + "." + ay + "." + yil

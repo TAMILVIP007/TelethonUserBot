@@ -4,6 +4,8 @@
 import os
 
 
+
+
 class Config:
     LOGGER = True
     # Get this value from my.telegram.org! Please do not steal
@@ -16,36 +18,29 @@ class Config:
     HU_STRING_SESSION = os.environ.get("HU_STRING_SESSION", None)
     # Get your own APPID from https://api.openweathermap.org/data/2.5/weather
     OPEN_WEATHER_MAP_APPID = os.environ.get("OPEN_WEATHER_MAP_APPID", None)
-    # Send .get_id in any group to fill this value.
-    PRIVATE_GROUP_BOT_API_ID = os.environ.get("PRIVATE_GROUP_BOT_API_ID", None)
-    if PRIVATE_GROUP_BOT_API_ID:
+    if PRIVATE_GROUP_BOT_API_ID := os.environ.get(
+        "PRIVATE_GROUP_BOT_API_ID", None
+    ):
         PRIVATE_GROUP_BOT_API_ID = int(PRIVATE_GROUP_BOT_API_ID)
-    # tag channel
-    TAG_CHANNEL = os.environ.get("TAG_CHANNEL", None)
-    if TAG_CHANNEL:
+    if TAG_CHANNEL := os.environ.get("TAG_CHANNEL", None):
         TAG_CHANNEL = int(TAG_CHANNEL)
-    # Send .get_id in any channel to fill this value. ReQuired for @Manuel15 inspiration to work!
-    PRIVATE_CHANNEL_BOT_API_ID = os.environ.get(
-        "PRIVATE_CHANNEL_BOT_API_ID", None)
-    if PRIVATE_CHANNEL_BOT_API_ID:
+    if PRIVATE_CHANNEL_BOT_API_ID := os.environ.get(
+        "PRIVATE_CHANNEL_BOT_API_ID", None
+    ):
         PRIVATE_CHANNEL_BOT_API_ID = int(PRIVATE_CHANNEL_BOT_API_ID)
 
-    # Send .get_id in any group with all your administration bots (added)
-    G_BAN_LOGGER_GROUP = os.environ.get("G_BAN_LOGGER_GROUP", None)
-    if G_BAN_LOGGER_GROUP:
+    if G_BAN_LOGGER_GROUP := os.environ.get("G_BAN_LOGGER_GROUP", None):
         G_BAN_LOGGER_GROUP = int(G_BAN_LOGGER_GROUP)
 
-    PM_LOGGR_BOT_API_ID = os.environ.get("PM_LOGGR_BOT_API_ID", None)
-    if PM_LOGGR_BOT_API_ID:
+    if PM_LOGGR_BOT_API_ID := os.environ.get("PM_LOGGR_BOT_API_ID", None):
         PM_LOGGR_BOT_API_ID = int(PM_LOGGR_BOT_API_ID)
 
-    SPAM_WATCH_LOG_CHANNEL = os.environ.get("SPAM_WATCH_LOG_CHANNEL", None)
-    if SPAM_WATCH_LOG_CHANNEL:
+    if SPAM_WATCH_LOG_CHANNEL := os.environ.get(
+        "SPAM_WATCH_LOG_CHANNEL", None
+    ):
         SPAM_WATCH_LOG_CHANNEL = int(SPAM_WATCH_LOG_CHANNEL)
 
-    # RSS_POST_MSG_GROUP_ID = map(int, os.environ.get("RSS_POST_MSG_GROUP_ID", None).split())
-    RSS_POST_MSG_GROUP_ID = os.environ.get("RSS_POST_MSG_GROUP_ID", None)
-    if RSS_POST_MSG_GROUP_ID:
+    if RSS_POST_MSG_GROUP_ID := os.environ.get("RSS_POST_MSG_GROUP_ID", None):
         RSS_POST_MSG_GROUP_ID = int(RSS_POST_MSG_GROUP_ID)
 
     # This is required for the plugins involving the file system.
@@ -175,6 +170,7 @@ class Config:
     STREAM_TAPE_LOGIN = os.environ.get("STREAM_TAPE_LOGIN", None)
     STREAM_TAPE_KEY = os.environ.get("STREAM_TAPE_KEY", None)
     GO_FILE_API = os.environ.get("GO_FILE_API", None)
+
 
 
 class Production(Config):

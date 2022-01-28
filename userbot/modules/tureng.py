@@ -19,7 +19,7 @@ def searchTureng(word):
     try:
         table = soup.find('table')
         td = table.findAll('td', attrs={'lang': 'tr'})
-        for val in td[0:5]:
+        for val in td[:5]:
             trlated = '{}👉  {}\n'.format(trlated, val.text)
         return trlated
     except:
@@ -37,7 +37,7 @@ def turengsearch(word):
     try:
         table = soup.find('table')
         td = table.findAll('td', attrs={'lang': 'tr'})
-        for val in td[0:20]:
+        for val in td[:20]:
             trlated = '{}👉  {}\n'.format(trlated, val.text)
         return trlated
     except:
@@ -57,7 +57,7 @@ def searchTureng_tr(word):
         table = soup.find('table')
         td = table.find_all('td', attrs={'lang': 'en'})
         # print(td)
-        for val in td[0:5]:
+        for val in td[:5]:
             trlated = '{}👉  {}\n'.format(trlated, val.text)
         return trlated
     except:

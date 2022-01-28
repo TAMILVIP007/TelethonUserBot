@@ -26,10 +26,8 @@ async def _(event):
     downloaded_file_name = Config.TMP_DOWNLOAD_DIRECTORY
     await event.edit("Finish downloading to my local")
     command_to_exec = f"./userbot/bin/cmrudl.py {url} -d ./DOWNLOADS/"
-    reply_to_id = event.message.id
     PROCESS_RUN_TIME = 100
-    if event.reply_to_msg_id:
-        reply_to_id = event.reply_to_msg_id
+    reply_to_id = event.reply_to_msg_id or event.message.id
     start_time = time.time() + PROCESS_RUN_TIME
     process = await asyncio.create_subprocess_shell(
         command_to_exec,

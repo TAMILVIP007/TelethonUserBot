@@ -69,8 +69,7 @@ async def imdb(e):
                 'div', "inline canwrap").findAll('p')[0].text
         else:
             story_line = 'Not available'
-        info = soup.findAll('div', "txt-block")
-        if info:
+        if info := soup.findAll('div', "txt-block"):
             mov_country = []
             mov_language = []
             for node in info:

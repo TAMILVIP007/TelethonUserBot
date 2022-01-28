@@ -10,8 +10,7 @@ async def _(event):
     if event.fwd_from:
         return
     entity = event.chat_id
-    input_str = event.pattern_match.group(1)
-    if input_str:
+    if input_str := event.pattern_match.group(1):
         entity = input_str
     status_message = await event.reply(
         "... this might take some time "

@@ -88,10 +88,13 @@ async def download(dryb):
                 speed = downloader.get_speed()
                 elapsed_time = round(diff) * 1000
                 progress_str = "[{0}{1}]\nProgress: {2}%".format(
-                    ''.join("█" for i in range(math.floor(percentage / 5))),
-                    ''.join("░" for i in range(
-                        20 - math.floor(percentage / 5))),
-                    round(percentage, 2))
+                    ''.join("█" for _ in range(math.floor(percentage / 5))),
+                    ''.join(
+                        "░" for _ in range(20 - math.floor(percentage / 5))
+                    ),
+                    round(percentage, 2),
+                )
+
                 estimated_total_time = downloader.get_eta(human=True)
                 try:
                     current_message = f"{status}...\nURL: {url}\nFile Name: {file_name}\n{progress_str}\n{humanbytes(downloaded)} of {humanbytes(total_length)}\nETA: {estimated_total_time}"
@@ -230,8 +233,10 @@ async def upload_file(http, file_path, file_name, mime_type, event):
             percentage = int(status.progress() * 100)
             progress_str = "[{0}{1}]\nProgress: {2}%\n".format(
                 ''.join("█" for i in range(math.floor(percentage / 5))),
-                ''.join("░" for i in range(20 - math.floor(percentage / 5))),
-                round(percentage, 2))
+                ''.join("░" for _ in range(20 - math.floor(percentage / 5))),
+                round(percentage, 2),
+            )
+
             await event.edit(f"Uploading to Google Drive...\n\nFile Name: {file_name}\n{progress_str}")
     if file:
         await event.edit(file_name + " Uploaded Successfully")

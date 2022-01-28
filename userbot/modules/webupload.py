@@ -78,8 +78,7 @@ async def _(event):
 @bot.on(admin_cmd(pattern="goup ?(.*)"))
 async def _(event):
     await event.edit("processing ...")
-    input_str = event.pattern_match.group(1)
-    if input_str:
+    if input_str := event.pattern_match.group(1):
         file_name = input_str
     else:
         reply = await event.get_reply_message()

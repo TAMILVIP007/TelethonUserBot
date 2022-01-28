@@ -30,8 +30,7 @@ async def _(event):
         add_admins=True,
     )
     input_str = event.pattern_match.group(1)
-    reply_msg_id = event.message.id
-    if reply_msg_id:
+    if reply_msg_id := event.message.id:
         r_mesg = await event.get_reply_message()
         to_promote_id = r_mesg.sender_id
     elif input_str:
@@ -54,8 +53,7 @@ async def _(event):
         post_messages=True
     )
     input_str = event.pattern_match.group(1)
-    reply_msg_id = event.message.id
-    if reply_msg_id:
+    if reply_msg_id := event.message.id:
         r_mesg = await event.get_reply_message()
         to_promote_id = r_mesg.sender_id
     elif input_str:

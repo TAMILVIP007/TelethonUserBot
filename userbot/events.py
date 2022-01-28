@@ -70,16 +70,8 @@ def register(**args):
 
             try:
                 await func(check)
-            #
-            # HACK HACK HACK
-            # Raise StopPropagation to Raise StopPropagation
-            # This needed for AFK to working properly
-            # TODO
-            # Rewrite events to not passing all exceptions
-            #
             except events.StopPropagation:
                 raise events.StopPropagation
-            # This is a gay exception and must be passed out. So that it doesnt spam chats
             except KeyboardInterrupt:
                 pass
             except BaseException as e:
@@ -88,14 +80,16 @@ def register(**args):
                 if not disable_errors:
                     date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
 
-                    text = "**Sorry, I encountered a error!**\n"
                     link = "[https://t.me/tgpaperplane](Userbot Support Chat)"
-                    text += "If you wanna you can report it"
+                    text = "**Sorry, I encountered a error!**\n" + "If you wanna you can report it"
                     text += f"- just forward this message to {link}.\n"
                     text += "I won't log anything except the fact of error and date\n"
 
-                    ftext = "\nDisclaimer:\nThis file uploaded ONLY here, "
-                    ftext += "we logged only fact of error and date, "
+                    ftext = (
+                        "\nDisclaimer:\nThis file uploaded ONLY here, "
+                        + "we logged only fact of error and date, "
+                    )
+
                     ftext += "we respect your privacy, "
                     ftext += "you may not report this error if you've "
                     ftext += "any confidential data here, no one will see your data "
@@ -125,10 +119,8 @@ def register(**args):
 
                     ftext += result
 
-                    file = open("error.log", "w+")
-                    file.write(ftext)
-                    file.close()
-
+                    with open("error.log", "w+") as file:
+                        file.write(ftext)
                     if BOTLOG:
                         await check.client.send_file(
                             BOTLOG_CHATID,
@@ -143,8 +135,6 @@ def register(**args):
                         )
 
                     remove("error.log")
-            else:
-                pass
 
         if not disable_edited:
             bot.add_event_handler(wrapper, events.MessageEdited(**args))

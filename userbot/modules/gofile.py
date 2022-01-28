@@ -39,7 +39,6 @@ async def go_file_del(event):
     await event.edit("`Progressing...`")
     API = Config.GO_FILE_API
     gofile = Gofile(token=API)
-    match = event.pattern_match.group(1)
-    if match:
+    if match := event.pattern_match.group(1):
         await gofile.delete_content(content_id=match)
         await event.edit("`File deleted..`")

@@ -67,7 +67,6 @@ class namazvakti():
 
     # ülke isimlerini bir dict (sözlük) olarak döner! Sıralı dönmesini bekleme!
     def ulkeler(self):
-        sonuc = {"durum": "hata", "veri": {}}
         ulkeListesi = {}
 
         for ulke in self.__veritabani:
@@ -76,9 +75,7 @@ class namazvakti():
                 ulkeAdi = self.ulkeIsimleri[ulkeAdi]
             ulkeListesi[int(ulke)] = ulkeAdi
 
-        sonuc["durum"] = "basarili"
-        sonuc["veri"] = ulkeListesi
-        return sonuc
+        return {'durum': 'basarili', 'veri': ulkeListesi}
 
     # şehirleri döner. Eğer ülkenin şehirlerinin ilçesi varsa şehirleri döner yoksa ilçeleri döner!
     def sehirler(self, ulke_id):
@@ -236,9 +233,7 @@ class namazvakti():
     # tarih için verilen sayılarda 10 dan küçük olanlar için başına sıfır koyar stringe çevirir, yoksa sadece stringe çevirir!
     @staticmethod
     def __sifirla(sayi):
-        if sayi < 10:
-            return "0" + str(sayi)
-        return str(sayi)
+        return "0" + str(sayi) if sayi < 10 else str(sayi)
 
     # burada direk urlyi değil tüm veriyi al! böylelikle 2 kere uğraşmamış olursun!
 

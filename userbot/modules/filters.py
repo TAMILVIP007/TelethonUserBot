@@ -46,9 +46,7 @@ async def on_snip(event):
                     entity=Config.PRIVATE_CHANNEL_BOT_API_ID,
                     ids=int(snip['msg'])
                 )
-                message_id = event.message.id
-                if event.reply_to_msg_id:
-                    message_id = event.reply_to_msg_id
+                message_id = event.reply_to_msg_id or event.message.id
                 await event.client.send_message(
                     event.chat_id,
                     msg_o.message,

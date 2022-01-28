@@ -97,7 +97,7 @@ async def kang(args):
         name = await bot.get_me()
         if name.username is not None:
             packnick = name.username + " Pack"
-            packname = name.username[0:]
+            packname = name.username[:]
         else:
             packnick = name.first_name + " Pack"
             packname = name.first_name.replace(" ", "_")

@@ -310,8 +310,7 @@ async def _insta_post_downloader(event):
         await asyncio.sleep(2)
 
     p = r'^(?:https?:\/\/)?(?:www\.)?(?:instagram\.com.*\/(p|tv|reel)\/)([\d\w\-_]+)(?:\/)?(\?.*)?$'
-    match = re.search(p, event.pattern_match.group(1))
-    if match:
+    if match := re.search(p, event.pattern_match.group(1)):
         dtypes = {
             'p': 'POST',
             'tv': 'IGTV',

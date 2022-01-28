@@ -66,8 +66,7 @@ def admin_cmd(**args):
 
     # add blacklist chats, UB should not respond in these chats
     args["blacklist_chats"] = True
-    black_list_chats = list(Config.UB_BLACK_LIST_CHAT)
-    if black_list_chats:
+    if black_list_chats := list(Config.UB_BLACK_LIST_CHAT):
         args["chats"] = black_list_chats
 
     return events.NewMessage(**args)

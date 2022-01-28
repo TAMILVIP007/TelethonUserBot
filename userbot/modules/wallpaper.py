@@ -23,8 +23,7 @@ async def wallp(event):
     if not os.path.isdir(down_p):
         os.makedirs(down_p)
     cat_id = event.chat_id
-    input_str = event.pattern_match.group(1)
-    if input_str:
+    if input_str := event.pattern_match.group(1):
         qu = input_str
         await event.edit(f'**Processing...**\n**Searching for **`{qu}`')
         try:
